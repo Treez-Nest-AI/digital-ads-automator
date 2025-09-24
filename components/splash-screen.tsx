@@ -37,7 +37,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
+    <div className="fixed inset-0 z-50 bg-black">
       <video
         autoPlay
         muted
@@ -45,8 +45,15 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         onEnded={handleVideoEnd}
         onLoadedData={handleVideoLoad}
         onError={handleVideoError}
-        className="w-full h-full object-contain"
-        style={{ maxHeight: "100vh", maxWidth: "100vw" }}
+        className="w-full h-full object-cover"
+        style={{ 
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          objectFit: 'cover'
+        }}
       >
         <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo-2-%5Bremix%5D%20%281%29-7bdjCfWiZF5DGWka7GxveEaJAS22wr.mp4" type="video/mp4" />
         Your browser does not support the video tag.

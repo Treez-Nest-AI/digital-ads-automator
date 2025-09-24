@@ -64,13 +64,9 @@ export default function LandingPage() {
             </a>
           </nav>
           <div className="flex items-center space-x-3">
-            <Button variant="outline" onClick={() => router.push("/auth/signin")}>
-              Book a demo
-            </Button>
-            <Button variant="outline" onClick={() => router.push("/auth/signin")}>
+            <Button className="bg-gray-900 hover:bg-gray-800 text-white" onClick={() => router.push("/auth/signin")}>
               Sign in
             </Button>
-            <Button className="bg-gray-900 hover:bg-gray-800 text-white">Start free</Button>
           </div>
         </div>
       </header>
@@ -132,19 +128,9 @@ export default function LandingPage() {
           <div className="relative">
             <Input
               type="text"
-              placeholder="Does TEadifyz AI support multi-platform or cross-platform strategies?"
-              className="w-full h-14 pl-12 pr-16 text-lg border-2 border-blue-200 rounded-full focus:border-blue-500 bg-blue-50"
+              placeholder="Add your product URL here for AI ads automation"
+              className="w-full h-14 pl-6 pr-16 text-lg border-2 border-blue-200 rounded-full focus:border-blue-500 bg-blue-50"
             />
-            <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
-              <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </div>
             <Button
               size="sm"
               className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 rounded-full h-10 w-10 p-0"

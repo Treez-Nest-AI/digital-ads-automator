@@ -4,6 +4,7 @@ import { Suspense } from "react"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import ClientWrapper from "./client-wrapper"
+import AuthSessionProvider from "@/components/session-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,9 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark ${inter.variable}`}>
       <body className="font-sans antialiased">
-        <ClientWrapper>
-          <Suspense fallback={null}>{children}</Suspense>
-        </ClientWrapper>
+        <AuthSessionProvider>
+          <ClientWrapper>
+            <Suspense fallback={null}>{children}</Suspense>
+          </ClientWrapper>
+        </AuthSessionProvider>
       </body>
     </html>
   )

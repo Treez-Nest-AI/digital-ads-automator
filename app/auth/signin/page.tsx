@@ -10,6 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { ArrowLeft, Mail, Lock, Eye, EyeOff } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { signIn, getSession, signOut } from "next-auth/react"
 
 export default function SignInPage() {
   const [email, setEmail] = useState("")
@@ -30,13 +31,25 @@ export default function SignInPage() {
     }, 2000)
   }
 
-  const handleSocialSignIn = (provider: string) => {
+  const handleSocialSignIn = async (provider: string) => {
     setIsLoading(true)
-    // Simulate social authentication
-    setTimeout(() => {
+    try {
+      const result = await signIn(provider, { 
+        redirect: false,
+        callbackUrl: "/onboarding/business-details"
+      })
+      
+      if (result?.error) {
+        console.error("Authentication error:", result.error)
+        // Handle error - you might want to show a toast or error message
+      } else if (result?.ok) {
+        router.push("/onboarding/business-details")
+      }
+    } catch (error) {
+      console.error("Sign in error:", error)
+    } finally {
       setIsLoading(false)
-      router.push("/onboarding/business-details")
-    }, 2000)
+    }
   }
 
   return (
